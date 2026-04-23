@@ -138,6 +138,38 @@
       transform:scale(1.05);
       box-shadow:0 6px 20px rgba(0,123,255,0.6);
     }
+
+    .thunder-wrap{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  margin-top:50px;
+}
+
+/* ⚡ FULL SCREEN FLASH */
+.flash{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:white;
+  opacity:0;
+  pointer-events:none;
+  animation:flashAnim 1.4s infinite;
+}
+
+/* ⚡ REALISTIC LIGHTNING FLICKER */
+@keyframes flashAnim{
+  0%{opacity:0;}
+  10%{opacity:0.9;}
+  12%{opacity:0.2;}
+  14%{opacity:1;}
+  16%{opacity:0.1;}
+  18%{opacity:0.8;}
+  22%{opacity:0;}
+  100%{opacity:0;}
+      }
   </style>
 </head>
 <body>
@@ -181,62 +213,64 @@
         </div>
         <div style="display:flex; justify-content:center; margin-top:40px;">
          <div style="display:flex; justify-content:center; margin-top:50px;">
-
-<svg width="500" height="120" viewBox="0 0 500 120">
-
-  <!-- Glow filter -->
-  <defs>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-
-  <!-- Lightning path -->
-  <path id="lightning"
-    d="M10 60 L80 40 L120 80 L180 30 L240 70 L300 40 L360 80 L420 50"
-    stroke="#00F7FF"
-    stroke-width="3"
-    fill="none"
-    filter="url(#glow)"
-    stroke-dasharray="500"
-    stroke-dashoffset="500">
-
-    <animate attributeName="stroke-dashoffset"
-      from="500"
-      to="0"
-      dur="1.2s"
-      repeatCount="indefinite"/>
-  </path>
-
-  <!-- AYAT360 TEXT -->
-  <text x="50%" y="65%" text-anchor="middle"
-    fill="#00F7FF"
-    font-size="28"
-    font-weight="bold"
-    opacity="0"
-    filter="url(#glow)">
-
-    AYAT360
-
-    <!-- Appear with lightning -->
-    <animate attributeName="opacity"
-      values="0;1;1;0"
-      keyTimes="0;0.3;0.8;1"
-      dur="1.2s"
-      repeatCount="indefinite"/>
-  </text>
-
-</svg>
-
-         </div>
       </div>
       <div class="portrait"><img src="ayat.jpg" alt="Developer portrait"></div>
     </div>
   </main>
+
+        <div class="thunder-wrap">
+
+  <!-- SCREEN FLASH -->
+  <div class="flash"></div>
+
+  <svg width="500" height="120" viewBox="0 0 500 120">
+
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="4" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- LIGHTNING -->
+    <path
+      d="M10 60 L80 40 L120 80 L180 30 L240 70 L300 40 L360 80 L420 50"
+      stroke="#00F7FF"
+      stroke-width="3"
+      fill="none"
+      filter="url(#glow)"
+      stroke-dasharray="500"
+      stroke-dashoffset="500">
+
+      <animate attributeName="stroke-dashoffset"
+        values="500;0;0;500"
+        keyTimes="0;0.3;0.7;1"
+        dur="1.4s"
+        repeatCount="indefinite"/>
+    </path>
+
+    <!-- TEXT -->
+    <text x="50%" y="65%" text-anchor="middle"
+      fill="#00F7FF"
+      font-size="28"
+      font-weight="bold"
+      opacity="0"
+      filter="url(#glow)">
+
+      AYAT360
+
+      <animate attributeName="opacity"
+        values="0;1;1;0"
+        keyTimes="0;0.3;0.8;1"
+        dur="1.4s"
+        repeatCount="indefinite"/>
+    </text>
+
+  </svg>
+        </div>
 
   <!-- PROJECTS -->
   <section id="projects">
