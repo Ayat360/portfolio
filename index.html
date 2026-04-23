@@ -180,46 +180,59 @@
           <a class="ghost" href="#contact">Hire Me</a>
         </div>
         <div style="display:flex; justify-content:center; margin-top:40px;">
+         <div style="display:flex; justify-content:center; margin-top:50px;">
 
-  <svg width="260" height="260" viewBox="0 0 320 320">
+<svg width="500" height="120" viewBox="0 0 500 120">
 
-    <!-- rotating line -->
-    <circle cx="160" cy="160" r="100"
-      stroke="#00F7FF"
-      stroke-width="2"
-      fill="none"
-      stroke-dasharray="15 10">
+  <!-- Glow filter -->
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
 
-      <animateTransform
-        attributeName="transform"
-        type="rotate"
-        from="0 160 160"
-        to="360 160 160"
-        dur="6s"
-        repeatCount="indefinite"/>
-    </circle>
+  <!-- Lightning path -->
+  <path id="lightning"
+    d="M10 60 L80 40 L120 80 L180 30 L240 70 L300 40 L360 80 L420 50"
+    stroke="#00F7FF"
+    stroke-width="3"
+    fill="none"
+    filter="url(#glow)"
+    stroke-dasharray="500"
+    stroke-dashoffset="500">
 
-    <!-- path -->
-    <defs>
-      <path id="circlePath"
-        d="M160,60 a100,100 0 1,1 -0.1,0"/>
-    </defs>
+    <animate attributeName="stroke-dashoffset"
+      from="500"
+      to="0"
+      dur="1.2s"
+      repeatCount="indefinite"/>
+  </path>
 
-    <!-- text -->
-    <text font-size="16" fill="#00F7FF" font-weight="bold">
-      <textPath href="#circlePath">
-        AYAT360 • AYAT360 • AYAT360 •
-        <animate attributeName="startOffset"
-          from="0%"
-          to="100%"
-          dur="10s"
-          repeatCount="indefinite"/>
-      </textPath>
-    </text>
+  <!-- AYAT360 TEXT -->
+  <text x="50%" y="65%" text-anchor="middle"
+    fill="#00F7FF"
+    font-size="28"
+    font-weight="bold"
+    opacity="0"
+    filter="url(#glow)">
 
-  </svg>
+    AYAT360
 
-        </div>
+    <!-- Appear with lightning -->
+    <animate attributeName="opacity"
+      values="0;1;1;0"
+      keyTimes="0;0.3;0.8;1"
+      dur="1.2s"
+      repeatCount="indefinite"/>
+  </text>
+
+</svg>
+
+         </div>
       </div>
       <div class="portrait"><img src="ayat.jpg" alt="Developer portrait"></div>
     </div>
