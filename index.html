@@ -179,6 +179,47 @@
           <a class="cta-btn" href="#projects">See Projects</a>
           <a class="ghost" href="#contact">Hire Me</a>
         </div>
+        <div style="display:flex; justify-content:center; margin-top:40px;">
+
+  <svg width="260" height="260" viewBox="0 0 320 320">
+
+    <!-- rotating line -->
+    <circle cx="160" cy="160" r="100"
+      stroke="#00F7FF"
+      stroke-width="2"
+      fill="none"
+      stroke-dasharray="15 10">
+
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0 160 160"
+        to="360 160 160"
+        dur="6s"
+        repeatCount="indefinite"/>
+    </circle>
+
+    <!-- path -->
+    <defs>
+      <path id="circlePath"
+        d="M160,60 a100,100 0 1,1 -0.1,0"/>
+    </defs>
+
+    <!-- text -->
+    <text font-size="16" fill="#00F7FF" font-weight="bold">
+      <textPath href="#circlePath">
+        AYAT360 • AYAT360 • AYAT360 •
+        <animate attributeName="startOffset"
+          from="0%"
+          to="100%"
+          dur="10s"
+          repeatCount="indefinite"/>
+      </textPath>
+    </text>
+
+  </svg>
+
+        </div>
       </div>
       <div class="portrait"><img src="ayat.jpg" alt="Developer portrait"></div>
     </div>
